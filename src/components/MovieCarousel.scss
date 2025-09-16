@@ -1,0 +1,105 @@
+.movie-carousel {
+  margin: 3rem 0;
+
+  &__title {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition);
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &--left {
+      left: -25px;
+
+      @media (max-width: 767px) {
+        left: -15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &--right {
+      right: -25px;
+
+      @media (max-width: 767px) {
+        right: -15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      display: none; // Hide navigation buttons on mobile, rely on touch scroll
+    }
+  }
+
+  &__empty {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--background-light);
+    border-radius: 8px;
+    border: 2px dashed var(--border-color);
+  }
+
+  @media (max-width: 767px) {
+    margin: 2rem 0;
+
+    &__title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

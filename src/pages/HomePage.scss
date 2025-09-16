@@ -1,0 +1,112 @@
+.home-page {
+  min-height: 100vh;
+
+  &__hero {
+    background: linear-gradient(
+      135deg,
+      var(--background-dark) 0%,
+      var(--background-light) 50%,
+      var(--background-dark) 100%
+    );
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(229, 9, 20, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  }
+
+  &__hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    background: linear-gradient(
+      45deg,
+      var(--primary-color),
+      var(--accent-color),
+      var(--primary-color)
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 767px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 767px) {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+  }
+
+  &__content {
+    padding-bottom: 4rem;
+  }
+
+  &__error {
+    margin: 3rem 0;
+    
+    .container {
+      text-align: center;
+      
+      h2 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+      
+      .error-message {
+        color: var(--primary-color);
+        background-color: var(--background-light);
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+        display: inline-block;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

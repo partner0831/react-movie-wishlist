@@ -1,0 +1,269 @@
+.movie-detail {
+  min-height: 100vh;
+  position: relative;
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+
+  &__backdrop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 20, 20, 0.3) 0%,
+      rgba(20, 20, 20, 0.7) 50%,
+      rgba(20, 20, 20, 1) 100%
+    );
+    z-index: -1;
+  }
+
+  &__breadcrumb {
+    padding: 2rem 0 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    
+    a {
+      color: var(--primary-color);
+      
+      &:hover {
+        color: var(--primary-hover);
+      }
+    }
+    
+    span {
+      margin: 0 0.5rem;
+      
+      &:last-child {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    padding: 2rem 0 4rem;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 967px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+  }
+
+  &__poster {
+    img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow-hover);
+      transition: var(--transition);
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    @media (max-width: 967px) {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin: 0;
+
+    @media (max-width: 767px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__tagline {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: var(--text-secondary);
+
+    @media (max-width: 967px) {
+      justify-content: center;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+
+  &__year {
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  &__runtime {
+    font-weight: 500;
+  }
+
+  &__rating {
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  &__votes {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  &__genres {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 967px) {
+      justify-content: center;
+    }
+  }
+
+  &__genre {
+    background-color: var(--background-light);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  }
+
+  &__description {
+    h3 {
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0;
+
+      @media (max-width: 967px) {
+        text-align: left;
+      }
+    }
+  }
+
+  &__wishlist-btn {
+    align-self: flex-start;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-weight: 600;
+
+    @media (max-width: 967px) {
+      align-self: center;
+    }
+  }
+
+  &__additional-info {
+    background-color: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+  }
+
+  &__info-item {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--text-primary);
+      margin-right: 0.5rem;
+    }
+  }
+
+  // Category-specific styling
+  &--popular {
+    .movie-detail__title {
+      color: var(--text-primary);
+    }
+  }
+
+  &--top-rated {
+    .movie-detail__title {
+      color: var(--text-primary);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &--upcoming {
+    .movie-detail__title {
+      color: var(--text-primary);
+      letter-spacing: 1px;
+    }
+  }
+
+  .error-state {
+    text-align: center;
+    padding: 4rem 0;
+
+    h1 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
